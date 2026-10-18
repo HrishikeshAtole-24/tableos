@@ -15,7 +15,7 @@ export function Logo({ size = 32, wordmark = true, inverse = false }: { size?: n
             color: inverse ? '#fff' : 'var(--color-text)',
           }}
         >
-          Table<span style={{ color: '#FC8019' }}>OS</span>
+          Table<span style={{ color: inverse ? '#FFE1C7' : '#FC8019' }}>OS</span>
         </span>
       )}
     </span>

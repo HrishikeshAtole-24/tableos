@@ -161,7 +161,6 @@ export function OtpInput({ value, onChange, length = 6, disabled, error }: { val
           inputMode="numeric"
           autoComplete={i === 0 ? 'one-time-code' : 'off'}
           pattern="[0-9]*"
-          maxLength={1}
           value={d}
           disabled={disabled}
           aria-label={`Digit ${i + 1}`}
@@ -169,12 +168,12 @@ export function OtpInput({ value, onChange, length = 6, disabled, error }: { val
           onPaste={onPaste}
           onChange={(e) => {
             const v = e.target.value.replace(/\D/g, '');
-            if (v.length > 1) {
+            if (v.length > 2 || (v.length === 2 && !d)) {
               onChange(v.slice(0, length));
               refs.current[Math.min(v.length, length - 1)]?.focus();
               return;
             }
-            set(i, v);
+            set(i, v.slice(-1));
             if (v && i < length - 1) refs.current[i + 1]?.focus();
           }}
         />

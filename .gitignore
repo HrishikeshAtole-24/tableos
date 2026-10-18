@@ -23,3 +23,5 @@ apps/web/AGENTS.md
 apps/console/AGENTS.md
 *.tsbuildinfo
 next-env.d.ts
+e2e/.auth/
+playwright-report/

@@ -88,7 +88,8 @@ const rzp=new Razorpay(opts);document.getElementById('pay').onclick=function(){r
     r.get('/pay/mock/:reference', async (req, res) => {
       const found = await s.payments.checkoutPage(z.string().max(40).parse(req.params.reference));
       if (!found) throw notFound('Payment');
-      res.setHeader('Content-Security-Policy', "default-src 'self'; style-src 'unsafe-inline'; form-action 'self'");
+      // form-action also governs the redirect after submit, so the console origin must be allowed.
+      res.setHeader('Content-Security-Policy', `default-src 'self'; style-src 'unsafe-inline'; form-action 'self' ${deps.env.CONSOLE_URL}`);
       res.type('html').send(
         page(
           'Test payment',
