@@ -64,7 +64,7 @@ export function attachSocketServer(opts: AttachOptions): { io: Server; realtime:
     pingTimeout: 15_000,
     connectionStateRecovery: { maxDisconnectionDuration: 2 * 60_000 },
   });
-  io.adapter(createAdapter(opts.pool, { tableName: 'socket_io_attachments' }));
+  io.adapter(createAdapter(opts.pool, { tableName: 'pgboss.socket_io_attachments' }));
 
   io.on('connection', async (socket) => {
     const auth = socket.handshake.auth as { token?: string; sessionToken?: string };

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { type InsightsDto, formatPaise } from '@tableos/schemas';
+import { type InsightsDto, formatPaise } from '@tableos/schemas/client';
 import { EmptyState, Icon, type IconName, Segmented, Skeleton } from '@tableos/ui';
 import { PageHeader } from '@/components/Shell';
 import { useQuery } from '@/lib/hooks';

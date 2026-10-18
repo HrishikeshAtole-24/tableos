@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import type { RestaurantDto } from '@tableos/schemas';
+import type { RestaurantDto } from '@tableos/schemas/client';
 import { Button, Chip, Input, Logo, useToast } from '@tableos/ui';
 import { ApiError, api, setActiveRestaurant } from '@/lib/api';
 import { SessionProvider, useSession } from '@/lib/session';

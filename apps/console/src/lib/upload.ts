@@ -1,6 +1,6 @@
 'use client';
 
-import type { UploadTicketDto } from '@tableos/schemas';
+import type { UploadTicketDto } from '@tableos/schemas/client';
 import { api } from './api';
 
 /** Upload straight to storage through a signed URL issued by the API (files never touch the API host). */

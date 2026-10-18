@@ -1,0 +1,9 @@
+{
+  "name": "@tableos/ai",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node ../../scripts/ai-dev.mjs",
+    "test": "node ../../scripts/ai-dev.mjs test"
+  }
+}

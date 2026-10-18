@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import type { OpeningHours, RestaurantDto } from '@tableos/schemas';
+import type { OpeningHours, RestaurantDto } from '@tableos/schemas/client';
 import { Banner, Button, Chip, Icon, Input, Switch, useToast } from '@tableos/ui';
 import { PageHeader } from '@/components/Shell';
 import { ApiError, api } from '@/lib/api';

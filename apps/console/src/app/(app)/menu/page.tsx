@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { type MenuCategoryDto, type MenuItemDto, formatPaise } from '@tableos/schemas';
+import { type MenuCategoryDto, type MenuItemDto, formatPaise } from '@tableos/schemas/client';
 import { Button, DietMark, EmptyState, Icon, IconButton, Input, Segmented, Sheet, Skeleton, Switch, Tabs, Tag, cx, useToast } from '@tableos/ui';
 import { DishEditor } from '@/components/DishEditor';
 import { PageHeader } from '@/components/Shell';
@@ -23,7 +23,7 @@ export default function MenuPage() {
   const [overId, setOverId] = useState<string | null>(null);
   const [query, setQuery] = useState('');
 
-  const cats = menu.data ?? [];
+  const cats = useMemo(() => menu.data ?? [], [menu.data]);
   useEffect(() => {
     if (!catId && cats[0]) setCatId(cats[0].id);
   }, [cats, catId]);

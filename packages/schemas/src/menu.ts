@@ -1,7 +1,10 @@
 import { z } from 'zod';
+import { MENU_TAGS } from './constants';
+
+export { MENU_TAGS } from './constants';
 import { basisPoints, diet, locale, paise, uuid } from './common';
 
-export const MENU_TAGS = ['bestseller', 'chef_special', 'new', 'must_try'] as const;
+
 export const menuTag = z.enum(MENU_TAGS);
 export type MenuTag = z.infer<typeof menuTag>;
 

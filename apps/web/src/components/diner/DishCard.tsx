@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { memo } from 'react';
-import { type PublicMenuItem, formatPaise } from '@tableos/schemas';
+import { type PublicMenuItem, formatPaise } from '@tableos/schemas/client';
 import { AddButton, DietMark, Icon, SpiceLevel, Tag, cx } from '@tableos/ui';
 import type { Strings } from '@/lib/i18n';
 import s from './diner.module.css';

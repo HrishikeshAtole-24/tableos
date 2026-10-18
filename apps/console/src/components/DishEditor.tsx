@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { type MenuCategoryDto, type MenuItemDto, MENU_TAGS, type MenuTag } from '@tableos/schemas';
+import { type MenuCategoryDto, type MenuItemDto, MENU_TAGS, type MenuTag } from '@tableos/schemas/client';
 import { Button, Chip, DietMark, Icon, IconButton, Input, Segmented, Select, Sheet, Switch, Textarea, useToast } from '@tableos/ui';
 import { ApiError, api } from '@/lib/api';
 import { uploadFile } from '@/lib/upload';

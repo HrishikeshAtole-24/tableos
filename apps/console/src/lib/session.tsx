@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { createContext, type ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import type { MeDto, RestaurantDto, Role } from '@tableos/schemas';
+import type { MeDto, RestaurantDto, Role } from '@tableos/schemas/client';
 import { Spinner } from '@tableos/ui';
 import { api, getActiveRestaurant, setActiveRestaurant } from './api';
 import { supabase } from './supabase';

@@ -1,4 +1,4 @@
-import type { Locale } from '@tableos/schemas';
+import type { Locale } from '@tableos/schemas/client';
 
 /** Interface strings for the diner menu. Dish names come from the menu translations. */
 const STRINGS = {

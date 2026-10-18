@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { type MenuCategoryDto, type OrderDto, type TableDto, formatPaise } from '@tableos/schemas';
+import { type MenuCategoryDto, type OrderDto, type TableDto, formatPaise } from '@tableos/schemas/client';
 import { Badge, Button, EmptyState, Icon, IconButton, Skeleton, Tabs, cx, useToast } from '@tableos/ui';
 import { PageHeader } from '@/components/Shell';
 import { BillPanel, OrderCard, RejectSheet, StaffOrderSheet } from '@/components/orders';

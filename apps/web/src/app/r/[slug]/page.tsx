@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
-import { type Locale, type PublicMenuDto, LOCALES } from '@tableos/schemas';
+import { type Locale, type PublicMenuDto, LOCALES } from '@tableos/schemas/client';
 import { DinerApp } from '@/components/diner/DinerApp';
 import { API_URL } from '@/lib/api';
 

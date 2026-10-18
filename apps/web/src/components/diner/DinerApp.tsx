@@ -1,19 +1,24 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { type BillDto, type Locale, type OrderDto, type PublicMenuDto, type PublicMenuItem, type ServiceRequestType, LOCALES, formatPaise } from '@tableos/schemas';
+import { type BillDto, type Locale, type OrderDto, type PublicMenuDto, type PublicMenuItem, type ServiceRequestType, LOCALES, formatPaise } from '@tableos/schemas/client';
 import { Banner, Button, Chip, EmptyState, Icon, IconButton, Sheet, cx, useToast } from '@tableos/ui';
 import { ApiError, NetworkError, apiFetch, newIdempotencyKey } from '@/lib/api';
 import { EMPTY_CART, cartCount, cartReducer, loadCart, qtyForItem, saveCart } from '@/lib/cart';
 import { LOCALE_LABEL, LOCALE_SHORT, t } from '@/lib/i18n';
 import { searchItems } from '@/lib/search';
-import { CartView } from './CartView';
 import { DishCard } from './DishCard';
-import { type DishSelection, DishSheet } from './DishSheet';
+import type { DishSelection } from './DishSheet';
 import { useAnalytics, useDinerSession, useOnline, useRealtime } from './hooks';
-import { BillSheet, OrdersView } from './OrdersView';
 import s from './diner.module.css';
+
+// Views that only open after an interaction load on demand to keep the first load small.
+const CartView = dynamic(() => import('./CartView').then((m) => m.CartView));
+const DishSheet = dynamic(() => import('./DishSheet').then((m) => m.DishSheet));
+const OrdersView = dynamic(() => import('./OrdersView').then((m) => m.OrdersView));
+const BillSheet = dynamic(() => import('./OrdersView').then((m) => m.BillSheet));
 
 type View = 'menu' | 'cart' | 'orders';
 type Filter = 'veg' | 'nonveg' | 'egg' | 'jain' | 'bestseller';
@@ -25,7 +30,7 @@ export function DinerApp({ initialMenu, qrToken, initialLocale }: { initialMenu:
   const [locale, setLocale] = useState<Locale>(initialLocale);
   const strings = t(locale);
   const r = menu.restaurant;
-  const { state: session, token, refresh, upsertOrder, markClosed } = useDinerSession(r.slug, qrToken);
+  const { state: session, refresh, upsertOrder, markClosed } = useDinerSession(r.slug, qrToken);
   const sessionId = session.kind === 'active' ? session.session.sessionId : null;
   const online = useOnline();
   const track = useAnalytics(r.id, sessionId);

@@ -1,4 +1,4 @@
-import type { PublicMenuItem } from '@tableos/schemas';
+import type { PublicMenuItem } from '@tableos/schemas/client';
 
 export interface CartLine {
   key: string;

@@ -1,5 +1,8 @@
 import { z } from 'zod';
-import { basisPoints, locale, role, uuid } from './common';
+import { WEEKDAYS } from './constants';
+
+export { WEEKDAYS } from './constants';
+import { basisPoints, locale, type role, uuid } from './common';
 
 const time = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, 'Use HH:MM');
 
@@ -14,7 +17,7 @@ export const openingHours = z.object({
   sun: z.array(z.object({ open: time, close: time })).max(3).default([]),
 });
 export type OpeningHours = z.infer<typeof openingHours>;
-export const WEEKDAYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'] as const;
+
 export type Weekday = (typeof WEEKDAYS)[number];
 
 export const theme = z.object({

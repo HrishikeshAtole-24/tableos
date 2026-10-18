@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { type BillDto, type MenuCategoryDto, type OrderDto, type TableDto, formatPaise } from '@tableos/schemas';
+import { type BillDto, type MenuCategoryDto, type OrderDto, type TableDto, formatPaise } from '@tableos/schemas/client';
 import { Badge, Button, Chip, DietMark, Icon, Input, Segmented, Select, Sheet, Textarea, cx, useToast } from '@tableos/ui';
 import { ApiError, api, uid } from '@/lib/api';
 import s from './console.module.css';

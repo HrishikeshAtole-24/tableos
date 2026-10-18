@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
-import { type CheckoutDto, type InvoiceDto, type LedgerEntryDto, type PaymentDto, type WalletDto, formatPaise } from '@tableos/schemas';
+import { type CheckoutDto, type InvoiceDto, type LedgerEntryDto, type PaymentDto, type WalletDto, formatPaise } from '@tableos/schemas/client';
 import { Badge, Banner, Button, Chip, EmptyState, Input, Skeleton, Tabs, useToast } from '@tableos/ui';
 import { PageHeader } from '@/components/Shell';
 import { ApiError, api, openHtml, uid } from '@/lib/api';

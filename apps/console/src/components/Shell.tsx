@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { type ReactNode, useState } from 'react';
-import type { Role } from '@tableos/schemas';
+import type { Role } from '@tableos/schemas/client';
 import { Icon, type IconName, IconButton, Logo, Sheet, cx } from '@tableos/ui';
 import { useSession } from '@/lib/session';
 import s from './console.module.css';

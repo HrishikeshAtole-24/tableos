@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, develop]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  node:
+    name: Lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      TEST_ADMIN_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
+      NEXT_PUBLIC_API_URL: http://localhost:4000
+      NEXT_PUBLIC_MENU_URL: http://localhost:3000
+      NEXT_PUBLIC_CONSOLE_URL: http://localhost:3001
+      NEXT_PUBLIC_SUPABASE_URL: http://localhost:54321
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-anon-key
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Dependency audit (fails on high severity)
+        run: pnpm audit --audit-level high --prod
+      - run: pnpm --filter @tableos/db generate
+      - run: npx eslint .
+      - run: npx stylelint "**/*.css"
+      - run: pnpm -r --workspace-concurrency=1 typecheck
+      - run: pnpm --filter @tableos/schemas test
+      - run: pnpm --filter @tableos/api test
+      - run: pnpm --filter @tableos/web build
+      - run: pnpm --filter @tableos/console build
+      - run: pnpm --filter @tableos/api build
+
+  ai:
+    name: AI service tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/ai
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -q
+        env:
+          AI_SERVICE_TOKEN: ci-token-1234567890

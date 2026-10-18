@@ -1,7 +1,10 @@
 import { z } from 'zod';
+import { ANALYTICS_TYPES } from './constants';
+
+export { ANALYTICS_TYPES } from './constants';
 import { uuid } from './common';
 
-export const ANALYTICS_TYPES = ['menu_view', 'item_view', 'add_to_cart', 'order_placed'] as const;
+
 
 export const analyticsBatchInput = z.object({
   restaurantId: uuid,

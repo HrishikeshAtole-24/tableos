@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo } from 'react';
-import { type ChecklistDto, type OrderDto, type TableDto, type WalletDto, formatPaise } from '@tableos/schemas';
+import { type ChecklistDto, type OrderDto, type TableDto, type WalletDto, formatPaise } from '@tableos/schemas/client';
 import { Banner, Button, Icon, type IconName, Skeleton, cx } from '@tableos/ui';
 import { PageHeader } from '@/components/Shell';
 import { download } from '@/lib/api';

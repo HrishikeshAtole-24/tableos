@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import type { StaffInviteDto, StaffMemberDto } from '@tableos/schemas';
+import type { StaffInviteDto, StaffMemberDto } from '@tableos/schemas/client';
 import { Badge, Button, Input, Segmented, Sheet, Skeleton, useToast } from '@tableos/ui';
 import { PageHeader } from '@/components/Shell';
 import { ApiError, api } from '@/lib/api';

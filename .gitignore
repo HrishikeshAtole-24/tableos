@@ -25,3 +25,4 @@ apps/console/AGENTS.md
 next-env.d.ts
 e2e/.auth/
 playwright-report/
+.venv/

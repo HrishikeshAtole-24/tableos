@@ -5,7 +5,6 @@ export const JOBS = {
   menuImport: 'menu.import',
   menuTranslate: 'menu.translate',
   imageResize: 'image.resize',
-  qrPdf: 'qr.pdf',
   walletAlerts: 'wallet.alerts',
   walletGraceCheck: 'wallet.grace-check',
   paymentsReconcile: 'payments.reconcile',

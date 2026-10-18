@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import type { TableDto } from '@tableos/schemas';
+import type { TableDto } from '@tableos/schemas/client';
 import { Badge, Button, EmptyState, Icon, IconButton, Input, Segmented, Sheet, Skeleton, Switch, useToast } from '@tableos/ui';
 import { PageHeader } from '@/components/Shell';
 import { ApiError, api, download } from '@/lib/api';

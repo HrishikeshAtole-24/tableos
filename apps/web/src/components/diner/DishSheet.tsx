@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
-import { type PublicMenuItem, formatPaise } from '@tableos/schemas';
+import { type PublicMenuItem, formatPaise } from '@tableos/schemas/client';
 import { Button, DietMark, Icon, Sheet, SpiceLevel, Tag, cx } from '@tableos/ui';
 import type { Strings } from '@/lib/i18n';
 import { TAG_TONE } from './DishCard';

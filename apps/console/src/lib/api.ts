@@ -1,6 +1,6 @@
 'use client';
 
-import type { ApiErrorBody } from '@tableos/schemas';
+import type { ApiErrorBody } from '@tableos/schemas/client';
 import { supabase } from './supabase';
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';

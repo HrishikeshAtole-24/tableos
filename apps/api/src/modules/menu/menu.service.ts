@@ -16,6 +16,7 @@ import { conflict, notFound } from '../../lib/errors';
 import { isOpenAt, nextOpenLabel, todayHoursLabel } from '../../lib/time';
 import { withTx } from '../../lib/tx';
 import { JOBS } from '../../jobs/queue';
+import { pathFromPublicUrl } from '../storage/images';
 import { canOrder } from '../wallet/wallet.service';
 
 const itemInclude = {
@@ -95,6 +96,11 @@ export class MenuService {
     if (opts.translate) await this.deps.jobs.send(JOBS.menuTranslate, { restaurantId }, { singletonKey: `translate:${restaurantId}` });
   }
 
+  private async queueResize(restaurantId: string, photoUrl: string | null | undefined) {
+    const path = photoUrl ? pathFromPublicUrl(photoUrl) : null;
+    if (path && this.deps.storage.ownsPath(restaurantId, path)) await this.deps.jobs.send(JOBS.imageResize, { path }, { singletonKey: `resize:${path}` });
+  }
+
   // ───── Read (dashboard) ─────
 
   async fullMenu(restaurantId: string): Promise<MenuCategoryDto[]> {
@@ -172,6 +178,7 @@ export class MenuService {
       return tx.menuItem.findUniqueOrThrow({ where: { id: created.id }, include: itemInclude });
     });
     await this.changed(restaurantId, { translate: true });
+    await this.queueResize(restaurantId, input.photoUrl);
     return toItemDto(item);
   }
 
@@ -194,6 +201,7 @@ export class MenuService {
       return tx.menuItem.findUniqueOrThrow({ where: { id }, include: itemInclude });
     });
     await this.changed(restaurantId, { translate: input.name !== undefined || input.description !== undefined || Boolean(input.variants) || Boolean(input.addonGroups) });
+    if (input.photoUrl) await this.queueResize(restaurantId, input.photoUrl);
     if (input.available !== undefined) this.deps.realtime.emit([rooms.menu(restaurantId)], 'menu.availability', { itemId: id, available: input.available, kind: 'item' });
     return toItemDto(item);
   }

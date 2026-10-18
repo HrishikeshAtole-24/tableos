@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import type { OrderDto } from '@tableos/schemas';
+import type { OrderDto } from '@tableos/schemas/client';
 import { Icon, cx, useToast } from '@tableos/ui';
 import { setStatus } from '@/components/orders';
 import { ApiError } from '@/lib/api';

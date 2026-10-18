@@ -6,7 +6,7 @@ import { badRequest, notFound } from '../lib/errors';
 import { json } from '../lib/http';
 import { escapeHtml as esc } from '../modules/notifications/mailer';
 import type { Checkout } from '../modules/payments/provider';
-import { MockProvider } from '../modules/payments/providers/mock';
+import { type MockProvider } from '../modules/payments/providers/mock';
 import type { Services } from '../services';
 
 function page(title: string, body: string, script = ''): string {

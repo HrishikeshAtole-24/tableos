@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { type PlatformMetricsDto, type RestaurantDto, formatPaise } from '@tableos/schemas';
+import { type PlatformMetricsDto, type RestaurantDto, formatPaise } from '@tableos/schemas/client';
 import { Badge, Button, EmptyState, Input, Logo, Select, Sheet, Skeleton, Tabs, Textarea, useToast } from '@tableos/ui';
 import { ApiError, api } from '@/lib/api';
 import { useQuery } from '@/lib/hooks';

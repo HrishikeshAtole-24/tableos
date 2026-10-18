@@ -187,4 +187,6 @@ export interface BillDto {
   openedAt: string;
 }
 
-export const ORDER_STEPS: readonly OrderStatus[] = ['placed', 'accepted', 'preparing', 'ready', 'served'];
+
+
+export { ORDER_STEPS } from './constants';

@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { OrderDto, ServiceRequestDto, SessionDto } from '@tableos/schemas';
+import type { OrderDto, ServiceRequestDto, SessionDto } from '@tableos/schemas/client';
 import { API_URL, ApiError, apiFetch } from '@/lib/api';
 
 export type SessionState =
@@ -124,7 +124,10 @@ export function useRealtime(sessionToken: string | null, handlers: RealtimeHandl
       poll = null;
     };
 
-    void import('socket.io-client').then(({ io }) => {
+    // Load the socket client only once the page is idle so it never competes with first paint.
+    const idle = (cb: () => void) => (typeof window.requestIdleCallback === 'function' ? window.requestIdleCallback(cb, { timeout: 2500 }) : setTimeout(cb, 1200));
+    const load = () => import('socket.io-client');
+    void new Promise<Awaited<ReturnType<typeof load>>>((resolve) => idle(() => void load().then(resolve))).then(({ io }) => {
       if (cancelled) return;
       const s = io(API_URL, { path: '/socket.io', auth: { sessionToken }, transports: ['websocket', 'polling'], reconnectionDelayMax: 8000 });
       socket = s;

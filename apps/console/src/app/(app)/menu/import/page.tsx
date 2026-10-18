@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { type ExtractedMenu, IMPORT_LIMITS, type MenuImportDto } from '@tableos/schemas';
+import { type ExtractedMenu, IMPORT_LIMITS, type MenuImportDto } from '@tableos/schemas/client';
 import { Banner, Button, Icon, IconButton, Spinner, cx, useToast } from '@tableos/ui';
 import { PageHeader } from '@/components/Shell';
 import { ApiError, api } from '@/lib/api';

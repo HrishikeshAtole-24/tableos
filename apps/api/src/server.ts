@@ -26,7 +26,7 @@ async function main() {
 
   const db = createPrismaClient(env.DATABASE_URL);
   const pool = new pg.Pool({ connectionString: env.DATABASE_URL, max: 4 });
-  await pool.query(`CREATE TABLE IF NOT EXISTS socket_io_attachments (id bigserial UNIQUE, created_at timestamptz DEFAULT NOW(), payload bytea)`);
+  await pool.query(`CREATE SCHEMA IF NOT EXISTS pgboss; CREATE TABLE IF NOT EXISTS pgboss.socket_io_attachments (id bigserial UNIQUE, created_at timestamptz DEFAULT NOW(), payload bytea)`);
 
   const providers = new ProviderRegistry().register(new RazorpayProvider()).register(new StripeProvider());
   if (env.NODE_ENV !== 'production') providers.register(new MockProvider(env.API_PUBLIC_URL));

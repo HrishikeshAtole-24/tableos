@@ -1,13 +1,9 @@
 import { z } from 'zod';
+import { IMPORT_LIMITS } from './constants';
+
+export { IMPORT_LIMITS } from './constants';
 import { diet, paise } from './common';
 
-export const IMPORT_LIMITS = {
-  maxFiles: 10,
-  maxFileBytes: 10 * 1024 * 1024,
-  perDay: 5,
-  mimeTypes: ['image/jpeg', 'image/png', 'application/pdf'] as const,
-  lowConfidence: 0.8,
-};
 
 export const uploadRequestInput = z.object({
   purpose: z.enum(['logo', 'cover', 'dish', 'import']),

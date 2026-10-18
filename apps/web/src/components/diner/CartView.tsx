@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { computeBill, formatPaise } from '@tableos/schemas';
+import { computeBill, formatPaise } from '@tableos/schemas/client';
 import { AddButton, Banner, Button, DietMark, Icon, IconButton } from '@tableos/ui';
 import type { CartAction, CartState } from '@/lib/cart';
 import type { Strings } from '@/lib/i18n';

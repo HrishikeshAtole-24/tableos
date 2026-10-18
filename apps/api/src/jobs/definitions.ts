@@ -1,5 +1,6 @@
 import type { Deps } from '../context';
 import type { Services } from '../services';
+import { resizeImage } from '../modules/storage/images';
 import { JOBS, type JobDefinition } from './queue';
 
 /** Every job is idempotent, retries with backoff (queue defaults), and logs its outcome. */
@@ -7,8 +8,7 @@ export function jobDefinitions(deps: Deps, s: Services): JobDefinition[] {
   return [
     { name: JOBS.menuImport, handler: async (d) => s.imports.process(String(d.importId)), retryLimit: 2, concurrency: 2 },
     { name: JOBS.menuTranslate, handler: async (d) => void (await s.menu.translateMissing(String(d.restaurantId))), retryLimit: 3 },
-    { name: JOBS.imageResize, handler: async () => undefined },
-    { name: JOBS.qrPdf, handler: async () => undefined },
+    { name: JOBS.imageResize, handler: async (d) => void (await resizeImage(deps.storage, String(d.path))), retryLimit: 3 },
     {
       name: JOBS.walletAlerts,
       handler: async (d) => s.notifications.walletAlert({ restaurantId: String(d.restaurantId), level: Number(d.level), balancePaise: Number(d.balancePaise) }),

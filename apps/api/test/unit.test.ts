@@ -122,3 +122,22 @@ describe('credentials encryption and status mapping', () => {
     expect(mapStatus('razorpay', 'weird')).toBe('pending');
   });
 });
+
+describe('image resizing job', () => {
+  it('writes three widths in AVIF and WebP', async () => {
+    const sharp = (await import('sharp')).default;
+    const { MemoryStorage } = await import('../src/modules/storage/storage');
+    const { resizeImage, pathFromPublicUrl } = await import('../src/modules/storage/images');
+    const storage = new MemoryStorage();
+    const rid = '11111111-1111-1111-1111-111111111111';
+    const path = `r/${rid}/dish/22222222-2222-2222-2222-222222222222.png`;
+    const png = await sharp({ create: { width: 1200, height: 900, channels: 3, background: '#fc8019' } }).png().toBuffer();
+    await storage.upload(path, png, 'image/png');
+    expect(pathFromPublicUrl(storage.publicUrl(path))).toBe(path);
+    const out = await resizeImage(storage, path);
+    expect(out).toHaveLength(6);
+    const meta = await sharp(storage.files.get(path.replace('.png', '-640.webp'))!.body).metadata();
+    expect(meta.width).toBe(640);
+    expect(meta.format).toBe('webp');
+  });
+});

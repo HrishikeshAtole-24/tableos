@@ -1,8 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { OrderDto, ServiceRequestDto } from '@tableos/schemas';
-import { API_URL, ApiError, accessToken, api } from './api';
+import type { OrderDto, ServiceRequestDto } from '@tableos/schemas/client';
+import { API_URL, type ApiError, accessToken, api } from './api';
 
 /** Minimal data hook: fetch on mount/when deps change, expose reload and a local setter. */
 export function useQuery<T>(path: string | null, deps: unknown[] = []) {

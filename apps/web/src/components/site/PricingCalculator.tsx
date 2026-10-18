@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useState } from 'react';
-import { formatPaise } from '@tableos/schemas';
+import { formatPaise } from '@tableos/schemas/client';
 import { Icon } from '@tableos/ui';
 import { CONSOLE_URL } from './SiteChrome';
 import s from './site.module.css';

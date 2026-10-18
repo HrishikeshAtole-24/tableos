@@ -1,6 +1,6 @@
 'use client';
 
-import { type BillDto, type OrderDto, ORDER_STEPS, formatPaise } from '@tableos/schemas';
+import { type BillDto, type OrderDto, ORDER_STEPS, formatPaise } from '@tableos/schemas/client';
 import { Badge, Button, DietMark, EmptyState, Icon, IconButton, Sheet, cx } from '@tableos/ui';
 import type { Strings } from '@/lib/i18n';
 import s from './diner.module.css';
