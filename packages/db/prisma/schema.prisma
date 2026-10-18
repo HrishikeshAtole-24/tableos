@@ -170,6 +170,8 @@ model Restaurant {
   flatPlanUntil                DateTime?        @map("flat_plan_until")
   status                       RestaurantStatus @default(active)
   qrDownloadedAt               DateTime?        @map("qr_downloaded_at")
+  featureFlags                 String[]         @default([]) @map("feature_flags")
+  statusReason                 String?          @map("status_reason")
   createdAt                    DateTime         @default(now()) @map("created_at")
   updatedAt                    DateTime         @updatedAt @map("updated_at")
 
