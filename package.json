@@ -1,0 +1,27 @@
+{
+  "name": "tableos",
+  "private": true,
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "format": "prettier --write .",
+    "db:migrate": "pnpm --filter @tableos/db migrate:dev",
+    "db:deploy": "pnpm --filter @tableos/db migrate:deploy",
+    "db:seed": "pnpm --filter @tableos/db seed",
+    "db:generate": "pnpm --filter @tableos/db generate"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "prettier": "3.9.10",
+    "tsx": "4.23.15",
+    "turbo": "2.11.9",
+    "typescript": "6.0.3"
+  }
+}

@@ -18,3 +18,4 @@ __pycache__/
 playwright-report/
 test-results/
 supabase/.temp/
+packages/db/src/generated/
