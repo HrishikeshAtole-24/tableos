@@ -1,0 +1,26 @@
+{
+  "name": "@tableos/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start --port 3000",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tableos/schemas": "workspace:*",
+    "@tableos/ui": "workspace:*",
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "socket.io-client": "4.8.4"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "6.0.3"
+  }
+}

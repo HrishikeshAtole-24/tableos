@@ -1,4 +1,4 @@
-import type { OrderDto, ServiceRequestDto } from './ordering.js';
+import type { OrderDto, ServiceRequestDto } from './ordering';
 
 export const SOCKET_EVENTS = {
   orderCreated: 'order.created',

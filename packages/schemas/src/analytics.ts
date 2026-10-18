@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { uuid } from './common.js';
+import { uuid } from './common';
 
 export const ANALYTICS_TYPES = ['menu_view', 'item_view', 'add_to_cart', 'order_placed'] as const;
 

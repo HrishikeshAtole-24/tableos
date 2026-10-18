@@ -10,7 +10,7 @@ import {
   paise,
   serviceRequestType,
   uuid,
-} from './common.js';
+} from './common';
 
 // ───── Tables & QR ─────
 

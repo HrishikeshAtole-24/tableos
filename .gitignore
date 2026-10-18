@@ -19,3 +19,7 @@ playwright-report/
 test-results/
 supabase/.temp/
 packages/db/src/generated/
+apps/web/AGENTS.md
+apps/console/AGENTS.md
+*.tsbuildinfo
+next-env.d.ts

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { type PaymentStatus, paise, signedPaise, uuid } from './common.js';
+import { type PaymentStatus, paise, signedPaise, uuid } from './common';
 
 export const rechargeInput = z.object({
   amountPaise: paise.min(100).max(10_000_000),

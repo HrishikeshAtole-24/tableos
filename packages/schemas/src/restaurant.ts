@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { basisPoints, locale, role, uuid } from './common.js';
+import { basisPoints, locale, role, uuid } from './common';
 
 const time = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, 'Use HH:MM');
 

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { basisPoints, diet, locale, paise, uuid } from './common.js';
+import { basisPoints, diet, locale, paise, uuid } from './common';
 
 export const MENU_TAGS = ['bestseller', 'chef_special', 'new', 'must_try'] as const;
 export const menuTag = z.enum(MENU_TAGS);

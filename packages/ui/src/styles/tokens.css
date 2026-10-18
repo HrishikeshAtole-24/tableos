@@ -1,0 +1,135 @@
+/*
+ * TableOS design tokens. Mirrors the Figma file "TableOS — Product Design"
+ * (variables: Color / Dimension, text and effect styles). Swiggy-inspired:
+ * warm orange accent, near-black ink, soft grey surfaces, green commerce actions.
+ */
+:root {
+  /* Brand */
+  --color-brand: #fc8019;
+  --color-brand-hover: #e46d07;
+  --color-brand-pressed: #cc6105;
+  --color-brand-soft: #fff1e6;
+  --color-brand-softer: #fff8f2;
+
+  /* Ink */
+  --color-text: rgba(2, 6, 12, 0.92);
+  --color-text-secondary: rgba(2, 6, 12, 0.6);
+  --color-text-tertiary: rgba(2, 6, 12, 0.45);
+  --color-text-disabled: rgba(2, 6, 12, 0.3);
+  --color-text-inverse: #ffffff;
+  --color-text-brand: var(--color-brand);
+
+  /* Surfaces */
+  --color-page: #ffffff;
+  --color-sunken: #f0f0f5;
+  --color-sunken-strong: #e2e2e7;
+  --color-raised: #ffffff;
+  --color-dark: #02060c;
+  --color-overlay: rgba(2, 6, 12, 0.56);
+
+  /* Lines */
+  --color-border: rgba(2, 6, 12, 0.1);
+  --color-border-strong: rgba(2, 6, 12, 0.2);
+  --color-divider: rgba(2, 6, 12, 0.06);
+  --color-focus: #2b6de5;
+
+  /* Diet marks (FSSAI convention) */
+  --color-veg: #0f8a65;
+  --color-nonveg: #e43b4f;
+  --color-egg: #f5a623;
+
+  /* Status */
+  --color-success: #1ba672;
+  --color-success-hover: #158f61;
+  --color-success-soft: #e6f7f1;
+  --color-warning: #f5a623;
+  --color-warning-strong: #b26b00;
+  --color-warning-soft: #fff6e5;
+  --color-danger: #e43b4f;
+  --color-danger-strong: #c42a3d;
+  --color-danger-soft: #fdebed;
+  --color-info: #2b6de5;
+  --color-info-soft: #eaf1fd;
+
+  /* Typography */
+  --font-sans: var(--font-outfit, 'Outfit'), var(--font-mukta, 'Mukta'), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-devanagari: var(--font-mukta, 'Mukta'), var(--font-outfit, 'Outfit'), system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --text-display: 800 2.5rem/1.2 var(--font-sans);
+  --text-h1: 800 1.75rem/1.21 var(--font-sans);
+  --text-h2: 700 1.375rem/1.27 var(--font-sans);
+  --text-h3: 700 1.125rem/1.33 var(--font-sans);
+  --text-title: 700 1rem/1.25 var(--font-sans);
+  --text-body: 400 0.875rem/1.43 var(--font-sans);
+  --text-body-medium: 500 0.875rem/1.43 var(--font-sans);
+  --text-body-strong: 600 0.875rem/1.43 var(--font-sans);
+  --text-caption: 500 0.75rem/1.33 var(--font-sans);
+  --text-overline: 700 0.6875rem/1.27 var(--font-sans);
+  --text-price: 600 0.9375rem/1.33 var(--font-sans);
+
+  --tracking-tight: -0.02em;
+  --tracking-snug: -0.01em;
+  --tracking-wide: 0.06em;
+
+  /* Spacing (4px grid) */
+  --space-0-5: 2px;
+  --space-1: 4px;
+  --space-1-5: 6px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --shadow-card: 0 2px 12px rgba(2, 6, 12, 0.08);
+  --shadow-raised: 0 4px 20px rgba(2, 6, 12, 0.1);
+  --shadow-sheet: 0 -4px 24px rgba(2, 6, 12, 0.16);
+  --shadow-float: 0 6px 16px rgba(252, 128, 25, 0.32);
+  --shadow-success: 0 6px 16px rgba(27, 166, 114, 0.32);
+  --shadow-focus: 0 0 0 3px rgba(43, 109, 229, 0.35);
+  --shadow-inset: inset 0 0 0 1px var(--color-border);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+
+  /* Layout */
+  --container: 1200px;
+  --container-narrow: 720px;
+  --tap: 44px;
+  --header-h: 64px;
+  --z-sticky: 20;
+  --z-header: 30;
+  --z-overlay: 50;
+  --z-sheet: 60;
+  --z-toast: 80;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}

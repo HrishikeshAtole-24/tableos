@@ -1,0 +1,124 @@
+.diet {
+  --diet: var(--color-veg);
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border: 1.5px solid var(--diet);
+  border-radius: 3px;
+  background: var(--color-raised);
+}
+
+.dietInner {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: var(--diet);
+}
+
+.veg {
+  --diet: var(--color-veg);
+}
+
+.egg {
+  --diet: var(--color-egg);
+}
+
+.nonveg {
+  --diet: var(--color-nonveg);
+}
+
+.nonveg .dietInner {
+  border-radius: 0;
+  width: 0;
+  height: 0;
+  background: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 7px solid var(--diet);
+  margin-top: -1px;
+}
+
+.tag,
+.badge {
+  --tag-bg: var(--color-sunken);
+  --tag-fg: var(--color-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  border-radius: 6px;
+  background: var(--tag-bg);
+  color: var(--tag-fg);
+  font: var(--text-caption);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge {
+  border-radius: var(--radius-pill);
+  padding: 3px var(--space-2-5, 10px);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.pulse {
+  animation: tos-pulse 1.6s var(--ease-in-out) infinite;
+}
+
+.tag_brand {
+  --tag-bg: var(--color-brand-soft);
+  --tag-fg: var(--color-brand-pressed);
+}
+
+.tag_info {
+  --tag-bg: var(--color-info-soft);
+  --tag-fg: var(--color-info);
+}
+
+.tag_success {
+  --tag-bg: var(--color-success-soft);
+  --tag-fg: var(--color-success-hover);
+}
+
+.tag_warning {
+  --tag-bg: var(--color-warning-soft);
+  --tag-fg: var(--color-warning-strong);
+}
+
+.tag_danger {
+  --tag-bg: var(--color-danger-soft);
+  --tag-fg: var(--color-danger-strong);
+}
+
+.tag_dark {
+  --tag-bg: var(--color-dark);
+  --tag-fg: var(--color-text-inverse);
+}
+
+.tag_neutral {
+}
+
+.spice {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--color-danger);
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--color-success);
+  font: var(--text-caption);
+  font-weight: 700;
+}
+
+.ratingCount {
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+}

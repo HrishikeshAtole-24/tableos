@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { computeBill, formatPaise, totalOrder } from './money.js';
+import { computeBill, formatPaise, totalOrder } from './money';
 
 describe('money', () => {
   it('formats paise as rupees', () => {

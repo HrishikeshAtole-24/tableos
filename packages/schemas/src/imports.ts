@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { diet, paise } from './common.js';
+import { diet, paise } from './common';
 
 export const IMPORT_LIMITS = {
   maxFiles: 10,
