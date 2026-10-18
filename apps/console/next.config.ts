@@ -17,6 +17,7 @@ const csp = [
 
 const config: NextConfig = {
   reactStrictMode: true,
+  devIndicators: false,
   poweredByHeader: false,
   transpilePackages: ['@tableos/ui', '@tableos/schemas'],
   images: {
