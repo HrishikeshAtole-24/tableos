@@ -15,7 +15,7 @@ COPY packages/db packages/db
 COPY packages/schemas packages/schemas
 COPY apps/api apps/api
 RUN pnpm --filter @tableos/db generate && pnpm --filter @tableos/api build
-RUN pnpm deploy --filter @tableos/api --prod --legacy /out && cp -r apps/api/dist /out/dist && cp -r packages/db/prisma /out/prisma
+RUN pnpm deploy --filter @tableos/api --prod --legacy --ignore-scripts /out && cp -r apps/api/dist /out/dist && cp -r packages/db/prisma /out/prisma
 
 FROM node:24-slim AS runtime
 ENV NODE_ENV=production
