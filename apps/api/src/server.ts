@@ -25,7 +25,7 @@ async function main() {
   if (env.SENTRY_DSN) Sentry.init({ dsn: env.SENTRY_DSN, environment: env.NODE_ENV, tracesSampleRate: 0.1 });
 
   const db = createPrismaClient(env.DATABASE_URL);
-  const pool = new pg.Pool({ connectionString: env.DATABASE_URL, max: 4 });
+  const pool = new pg.Pool({ connectionString: env.DATABASE_SESSION_URL || env.DATABASE_URL, max: 4 });
   await pool.query(`CREATE SCHEMA IF NOT EXISTS pgboss; CREATE TABLE IF NOT EXISTS pgboss.socket_io_attachments (id bigserial UNIQUE, created_at timestamptz DEFAULT NOW(), payload bytea)`);
 
   const providers = new ProviderRegistry().register(new RazorpayProvider()).register(new StripeProvider());

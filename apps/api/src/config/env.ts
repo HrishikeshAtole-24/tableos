@@ -14,6 +14,9 @@ const schema = z.object({
   NEXT_PUBLIC_MENU_URL: z.url().default('http://localhost:3000'),
   CORS_EXTRA_ORIGINS: z.string().default(''),
   DATABASE_URL: z.string().min(1),
+  // Session-mode connection for the Socket.IO adapter (LISTEN/NOTIFY). Set it when DATABASE_URL points
+  // at a transaction-mode pooler (e.g. Supabase :6543); defaults to DATABASE_URL.
+  DATABASE_SESSION_URL: z.string().optional(),
   SUPABASE_URL: z.url(),
   SUPABASE_ANON_KEY: z.string().min(1),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
