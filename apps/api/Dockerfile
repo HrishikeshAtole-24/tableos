@@ -14,7 +14,8 @@ RUN pnpm install --frozen-lockfile --filter @tableos/api... --ignore-scripts
 COPY packages/db packages/db
 COPY packages/schemas packages/schemas
 COPY apps/api apps/api
-RUN pnpm --filter @tableos/db generate && pnpm --filter @tableos/api build
+# prisma.config.ts requires DATABASE_URL; `generate` never connects, so a placeholder is enough at build time.
+RUN DATABASE_URL=postgresql://build@localhost/build pnpm --filter @tableos/db generate && pnpm --filter @tableos/api build
 RUN pnpm deploy --filter @tableos/api --prod --legacy /out && cp -r apps/api/dist /out/dist && cp -r packages/db/prisma /out/prisma
 
 FROM node:24-slim AS runtime
