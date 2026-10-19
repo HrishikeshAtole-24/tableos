@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { config } from 'dotenv';
-import { defineConfig, env } from 'prisma/config';
+import { defineConfig } from 'prisma/config';
 
 config({ path: fileURLToPath(new URL('../../.env', import.meta.url)), quiet: true });
 
@@ -11,6 +11,8 @@ export default defineConfig({
     seed: 'tsx prisma/seed.ts',
   },
   datasource: {
-    url: env('DATABASE_URL'),
+    // Optional so `prisma generate` (postinstall on Vercel, Docker builds) works without a database;
+    // migrate commands still fail clearly when it is missing.
+    url: process.env.DATABASE_URL ?? '',
   },
 });
