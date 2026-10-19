@@ -127,12 +127,14 @@ async function main() {
   const global = await db.pricingConfig.findFirst({ where: { restaurantId: null } });
   if (!global) await db.pricingConfig.create({ data: { restaurantId: null } });
 
+  // Hosted environments cannot receive mail at the demo addresses; SEED_OWNER_EMAIL / SEED_ADMIN_EMAIL
+  // point the owner and platform-admin logins at real inboxes (they may be the same address).
   const users = {
-    owner: { email: 'owner@demo.tableos.in', name: 'Aarti Kulkarni' },
+    owner: { email: process.env.SEED_OWNER_EMAIL || 'owner@demo.tableos.in', name: 'Aarti Kulkarni' },
     manager: { email: 'manager@demo.tableos.in', name: 'Rohan Deshpande' },
     waiter: { email: 'waiter@demo.tableos.in', name: 'Sagar Patil' },
     kitchen: { email: 'kitchen@demo.tableos.in', name: 'Chef Imran' },
-    admin: { email: 'admin@tableos.in', name: 'TableOS Admin' },
+    admin: { email: process.env.SEED_ADMIN_EMAIL || 'admin@tableos.in', name: 'TableOS Admin' },
   };
   const ids: Record<string, string> = {};
   for (const [k, u] of Object.entries(users)) {
